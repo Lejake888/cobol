@@ -1,0 +1,24 @@
+        IDENTIFICATION DIVISION. 
+        PROGRAM-ID. CONVERTER AS "CONVERTER".
+        DATA DIVISION.
+        WORKING-STORAGE SECTION. 
+            01 WS-CONVERTER PIC 9.
+            01 TEMPERATURES.
+                05 WS-INPUT-TEMP        PIC S9(3)V9(3).
+                05 WS-CONVERTED-TEMP    PIC S9(3)V9(3).
+        PROCEDURE DIVISION.
+           DISPLAY "[CONVERT TEMPERATURE]: 1= (C => F) 2= (F => C)".
+           ACCEPT WS-CONVERTER.
+           DISPLAY "[ENTER A TEMPERATURE]: ".
+           ACCEPT WS-INPUT-TEMP.
+
+           IF WS-CONVERTER = 1 THEN
+               COMPUTE WS-CONVERTED-TEMP = WS-INPUT-TEMP * (9/5) + 32
+           ELSE 
+               COMPUTE WS-CONVERTED-TEMP = (WS-INPUT-TEMP - 32) * (5/9)
+           END-IF.
+           DISPLAY WS-CONVERTED-TEMP
+
+           STOP RUN.   
+       END PROGRAM CONVERTER.
+       
