@@ -27,22 +27,21 @@
       * ALL LOCAL VARIABLES THAT WILL STORE THE DATA FROM FILE
            05 WS-FULL-NAME.
                10 WS-FIRST-NAME PIC X(15).
-               10 FILLER PIC X(2) VALUE SPACES.
+               10 FILLER PIC X(1) VALUE SPACES.
                10 WS-LAST-NAME PIC X(15).
            05 WS-BIRTHDAY.
                10 WS-BIRTH-DAY PIC 9(2).
-               10 FILLER PIC X(2) VALUE SPACES.
+               10 FILLER PIC X(1) VALUE SPACES.
                10 WS-BIRTH-MONTH PIC 9(2).
-               10 FILLER PIC X(2) VALUE SPACES.
+               10 FILLER PIC X(1) VALUE SPACES.
                10 WS-BIRTH-YEAR PIC 9(4).
         01 HEADERS. 
       * FORMATTING FOR THE HEADERS, SPACES LEFT TO SPACE THEM OUT
-           05 FILLER PIC X(3) VALUE SPACES.
            05 FILLER PIC X(10) VALUE "FIRST NAME".
            05 FILLER PIC X(5) VALUE SPACES.
            05 FILLER PIC X(10) VALUE "LAST NAME".
            05 FILLER PIC X(5) VALUE SPACES.
-           05 FILLER PIC X(10) VALUE "BIRTHDAY".
+           05 FILLER PIC X(20) VALUE "BIRTHDAY (D/M/Y)".
 
        PROCEDURE DIVISION.
 
@@ -71,6 +70,8 @@
                DISPLAY WS-DATA
                READ DATAFILE
                AT END SET ENDOFFILE TO TRUE
+               WRITE INPUTTED-DATA FROM INPUTTED-DATA
+               END-WRITE
                END-READ
            END-PERFORM.
        END PROGRAM COMBINED.
