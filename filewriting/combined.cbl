@@ -21,18 +21,24 @@
              10 BIRTH-DAY PIC 9(2).
              10 BIRTH-MONTH PIC 9(2).
        WORKING-STORAGE SECTION. 
-       01 WS-FULL-NAME.
-            05 WS-FIRST-NAME PIC X(15).
-            05 FILLER PIC X(2).
-            05 WS-LAST-NAME PIC X(15).
-       01 WS-FILE-STRUCTURE.
-          05 HEADERS.
-            10 FILLER PIC X(3) VALUE SPACES.
-            10 FILLER PIC X(10) VALUE "FIRST NAME".
-            10 FILLER PIC X(5) VALUE SPACES.
-            10 FILLER PIC X(10) VALUE "LAST NAME".
-            10 FILLER PIC X(5) VALUE SPACES.
-            10 FILLER PIC X(10) VALUE "BIRTHDAY".
+       01 WS-DATA.
+           05 WS-FULL-NAME.
+               10 WS-FIRST-NAME PIC X(15).
+               10 FILLER PIC X(2) VALUE SPACES.
+               10 WS-LAST-NAME PIC X(15).
+           05 WS-BIRTHDAY.
+               10 WS-BIRTH-DAY PIC 9(2).
+               10 FILLER PIC X(2) VALUE SPACES.
+               10 WS-BIRTH-MONTH PIC 9(2).
+               10 FILLER PIC X(2) VALUE SPACES.
+               10 WS-BIRTH-YEAR PIC 9(4).
+        01 HEADERS.
+           05 FILLER PIC X(3) VALUE SPACES.
+           05 FILLER PIC X(10) VALUE "FIRST NAME".
+           05 FILLER PIC X(5) VALUE SPACES.
+           05 FILLER PIC X(10) VALUE "LAST NAME".
+           05 FILLER PIC X(5) VALUE SPACES.
+           05 FILLER PIC X(10) VALUE "BIRTHDAY".
 
        PROCEDURE DIVISION.
 
@@ -50,7 +56,10 @@
            PERFORM UNTIL ENDOFFILE
                MOVE FIRST-NAME TO WS-FIRST-NAME
                MOVE LAST-NAME TO WS-LAST-NAME
-               DISPLAY WS-FULL-NAME
+               MOVE BIRTH-DAY TO WS-BIRTH-DAY
+               MOVE BIRTH-MONTH TO WS-BIRTH-MONTH
+               MOVE BIRTH-YEAR TO WS-BIRTH-YEAR
+               DISPLAY WS-DATA
                READ DATAFILE
                AT END SET ENDOFFILE TO TRUE
                END-READ
