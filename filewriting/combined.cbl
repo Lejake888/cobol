@@ -37,14 +37,14 @@
                10 WS-LAST-NAME PIC X(15).
            05 WS-BIRTHDAY.
                10 WS-BIRTH-DAY PIC 9(2).
-               10 FILLER PIC X(1) VALUE SPACES.
+               10 FILLER PIC X(1) VALUE "/".
                10 WS-BIRTH-MONTH PIC 9(2).
-               10 FILLER PIC X(1) VALUE SPACES.
+               10 FILLER PIC X(1) VALUE "/".
                10 WS-BIRTH-YEAR PIC 9(4).
         01 HEADERS. 
       * FORMATTING FOR THE HEADERS, SPACES LEFT TO SPACE THEM OUT
            05 FILLER PIC X(10) VALUE "FIRST NAME".
-           05 FILLER PIC X(5) VALUE SPACES.
+           05 FILLER PIC X(6) VALUE SPACES.
            05 FILLER PIC X(10) VALUE "LAST NAME".
            05 FILLER PIC X(5) VALUE SPACES.
            05 FILLER PIC X(20) VALUE "BIRTHDAY (D/M/Y)".
